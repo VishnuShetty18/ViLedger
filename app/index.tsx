@@ -1,8 +1,18 @@
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function LoginScreen() {
   const [phone, setPhone] = useState('');
+  const router = useRouter();
+
+  const handleSendOTP = () => {
+    if (phone.length === 10) {
+      router.push('/dashboard');
+    } else {
+      alert('Please enter a valid 10 digit phone number!');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -19,7 +29,7 @@ export default function LoginScreen() {
           value={phone}
           onChangeText={setPhone}
         />
-        <TouchableOpacity style={styles.button} onPress={() => alert(`OTP sent to ${phone}!`)}>
+        <TouchableOpacity style={styles.button} onPress={handleSendOTP}>
           <Text style={styles.buttonText}>Send OTP</Text>
         </TouchableOpacity>
       </View>
