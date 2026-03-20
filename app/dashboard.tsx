@@ -1,6 +1,8 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function DashboardScreen() {
+  const router = useRouter();
   return (
     <ScrollView style={styles.container}>
       
@@ -21,7 +23,13 @@ export default function DashboardScreen() {
         <Text style={styles.pendingLabel}>Total Pending Balance</Text>
         <Text style={styles.pendingAmount}>₹ 12,500</Text>
       </View>
-      <Text style={styles.sectionTitle}>Your Customers</Text>
+
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Your Customers</Text>
+        <TouchableOpacity style={styles.addButton} onPress={() => router.push('/add-customer')}>
+          <Text style={styles.addButtonText}>+ Add</Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.customerCard}>
         <View>
@@ -142,5 +150,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#E53935',
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
+    marginBottom: 12,
+  },
+  addButton: {
+    backgroundColor: '#2E86AB',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  addButtonText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
