@@ -31,7 +31,7 @@ export default function DashboardScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.customerCard}>
+      <TouchableOpacity style={styles.customerCard} onPress={() => router.push('/add-credit')}>
         <View>
           <Text style={styles.customerName}>Raju Kumar</Text>
           <Text style={styles.customerPhone}>98765 43210</Text>
@@ -39,7 +39,7 @@ export default function DashboardScreen() {
         <View style={styles.balanceBadge}>
           <Text style={styles.balanceText}>₹ 500</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.customerCard}>
         <View>
